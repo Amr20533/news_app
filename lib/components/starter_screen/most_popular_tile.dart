@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/model/article_model.dart';
 import 'package:news_app/utils/helper/format_helper.dart';
+import 'package:news_app/views/web_view_screen.dart';
 
 class MostPopularTile extends StatelessWidget {
   const MostPopularTile({
@@ -14,7 +15,7 @@ class MostPopularTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap:(){
-        // Navigator.push(context, MaterialPageRoute(builder: (context)=>webViewScreen(url:article['url'])));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> WebViewScreen(url: article.url)));
       },
       child:Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),

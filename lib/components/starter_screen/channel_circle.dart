@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/model/channels.dart';
+import 'package:news_app/views/web_view_screen.dart';
 
 class ChannelCircle extends StatelessWidget {
   const ChannelCircle({
@@ -12,7 +13,9 @@ class ChannelCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap:(){},
+      onTap:(){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> WebViewScreen(url: channel.urlTo)));
+      },
       child:Container(
         width: 80,
         padding: const EdgeInsets.symmetric(horizontal: 12.0),

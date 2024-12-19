@@ -5,8 +5,9 @@ class Channels{
 
   Channels({required this.urlTo,required this.imageUrl, required this.name});
   static List<Channels> channelList = [
-    Channels(imageUrl: 'https://download.logo.wine/logo/BBC_News/BBC_News-Logo.wine.png', name: "BBC News", urlTo: 'https://www.theguardian.com/international'),
-    Channels(imageUrl: 'https://logos-world.net/wp-content/uploads/2023/04/Al-Jazeera-Logo-1996.png', name: "Al Jazeera", urlTo: 'https://logos-world.net/wp-content/uploads/2023/04/Al-Jazeera-Logo-1996.png'),
+    Channels(imageUrl: 'https://download.logo.wine/logo/BBC_News/BBC_News-Logo.wine.png', name: "BBC News", urlTo: 'https://www.bbc.com/news'),
+    Channels(imageUrl: 'https://logos-world.net/wp-content/uploads/2023/04/Al-Jazeera-Logo-1996.png', name: "Al Jazeera", urlTo: 'https://www.aljazeeramubasher.net/news/'),
+    // Channels(imageUrl: 'https://th.bing.com/th?id=OIP.oGSW5eKz5lPVfVhj67BbQwHaEJ&w=80&h=80&c=1&vt=10&bgcl=0e0b56&r=0&o=6&pid=5.1', name: "Al Jazeera", urlTo: 'https://www.aljazeeramubasher.net/news/'),
     Channels(imageUrl: 'https://th.bing.com/th/id/OIP.PvDLy0KxPgO342J6ASzjTAAAAA?rs=1&pid=ImgDetMain', name: "France 24", urlTo: 'https://edition.cnn.com/'),
     Channels(imageUrl: 'https://macmiller.com/wp-content/uploads/2018/08/wall-street-journal.png', name: "The Wall Street Journal", urlTo: 'https://www.wsj.com/?msockid=311b6257b0696324336b770db1156220'),
     Channels(imageUrl: 'https://brandlogos.net/wp-content/uploads/2014/10/cnn-logo.png', name: "CNN", urlTo: 'https://edition.cnn.com/'),
