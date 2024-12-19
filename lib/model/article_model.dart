@@ -10,6 +10,7 @@ class Article {
   String publishedAt;
   String content;
 
+  // Constructor that initializes the Article object with the required and optional parameters
   Article({
     required this.source,
     this.author,
@@ -21,22 +22,24 @@ class Article {
     required this.content,
   });
 
+  // Factory constructor to create an Article object from a JSON map
   factory Article.fromJson(Map<String, dynamic> json) {
     return Article(
-      source: Source.fromJson(json['source']),
-      author: json['author'],
-      title: json['title'] ?? '',
-      description: json['description'] ?? '',
-      url: json['url'] ?? '',
-      urlToImage: json['urlToImage'],
-      publishedAt: json['publishedAt'] ?? '',
-      content: json['content'] ?? '',
+      source: Source.fromJson(json['source']),  // Calls Source.fromJson to handle the nested 'source' object
+      author: json['author'],  // Optional field, can be null
+      title: json['title'] ?? '',  // Provides a default empty string if 'title' is null
+      description: json['description'] ?? '',  // Provides a default empty string if 'description' is null
+      url: json['url'] ?? '',  // Provides a default empty string if 'url' is null
+      urlToImage: json['urlToImage'],  // Optional field, can be null
+      publishedAt: json['publishedAt'] ?? '',  // Default empty string if 'publishedAt' is null
+      content: json['content'] ?? '',  // Default empty string if 'content' is null
     );
   }
 
+  // Method to convert the Article object back to a JSON map
   Map<String, dynamic> toJson() {
     return {
-      'source': source.toJson(),
+      'source': source.toJson(),  // Calls the toJson() method on the 'source' object
       'author': author,
       'title': title,
       'description': description,
@@ -47,4 +50,3 @@ class Article {
     };
   }
 }
-

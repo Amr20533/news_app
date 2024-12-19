@@ -47,7 +47,7 @@ class NewsController extends GetxController{
       List<Article> articles = articleResponseModelFromJson(response.body)
           .articles;
       _journalNews.addAll(articles);
-      debugPrint('Journal Data: ${articles.toList()}');
+      // debugPrint('Journal Data: ${articles.toJson()}');
     } else {
       debugPrint('Error: ${response.statusCode} - ${response.body}');
       if (response.statusCode == 401) {
@@ -78,7 +78,7 @@ class NewsController extends GetxController{
   }
 
   Future<void> getTeslaNews() async {
-    final response = await repo.getQueryNews(query: 'tesla', date: '2024-11-18', sortBy: 'publishedAt');
+    final response = await repo.getQueryNews(query: 'tesla', date: '2024-11-19', sortBy: 'publishedAt');
 
     debugPrint('Response: ${response.body}');
 
@@ -98,7 +98,7 @@ class NewsController extends GetxController{
   }
 
   Future<void> getAppleNews() async {
-    final response = await repo.getQueryNews(query: 'apple', date: '2024-12-17', sortBy: 'popularity');
+    final response = await repo.getPeriodicNews(query: 'apple', from: '2024-12-18', to: '2024-12-18', sortBy: 'popularity');
 
     if (response.statusCode == 200) {
       List<Article> articles = articleResponseModelFromJson(response.body).articles;

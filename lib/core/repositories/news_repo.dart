@@ -56,4 +56,19 @@ class NewsRepo {
       return http.Response('Error: $e', 500);
     }
   }
+
+  Future<http.Response> getPeriodicNews({required String query, required String from, required String to, required String sortBy}) async {
+    try {
+      return await apiClient.requestData(AppConstants.baseUrl, {
+        'q': query,
+        'from': from,
+        'to': to,
+        'sortBy': sortBy,
+        'apiKey': AppConstants.apiKey,
+      });
+    } catch (e) {
+      debugPrint('Error while making API request: $e');
+      return http.Response('Error: $e', 500);
+    }
+  }
 }
