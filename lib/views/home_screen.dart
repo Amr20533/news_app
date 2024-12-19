@@ -22,7 +22,7 @@ class HomeScreen extends GetView<HomeController> {
           ),
         ),
       ),
-      body: controller.screens[controller.currentScreen.value],
+      body: Obx(() => controller.screens[controller.currentScreen.value]),
       bottomNavigationBar: const CustomBottomNavBar(),
     );
   }
