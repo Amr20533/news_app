@@ -7,8 +7,8 @@ class HomeController extends GetxController{
 
   List<Widget> screens = [
     const StarterScreen(),
-    const SearchScreen(),
     Container(),
+    const SearchScreen(),
   ];
 
   final RxInt _currentScreen = 0.obs;

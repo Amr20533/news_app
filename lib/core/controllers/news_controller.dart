@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:news_app/core/repositories/news_repo.dart';
 import 'package:news_app/model/article_model.dart';
@@ -8,20 +7,30 @@ import 'package:news_app/model/article_response_model.dart';
 class NewsController extends GetxController{
   final NewsRepo repo;
   NewsController({required this.repo});
-  List<Article> _teslaNews = [];
+  final List<Article> _teslaNews = [];
   List<Article> get teslaNews => _teslaNews;
 
-  List<Article> _journalNews = [];
+  final List<Article> _journalNews = [];
   List<Article> get journalNews => _journalNews;
 
-  List<Article> _business = [];
+  final List<Article> _business = [];
   List<Article> get business => _business;
 
-  List<Article> _apple = [];
+  final List<Article> _apple = [];
   List<Article> get apple => _apple;
 
-  List<Article> _technology = [];
+  final List<Article> _technology = [];
   List<Article> get technology => _technology;
+
+  @override
+  void onReady() {
+    getJournalNews();
+    getBusinessNews();
+    getTechnologyNews();
+    getAppleNews();
+    getTeslaNews();
+    super.onReady();
+  }
 
   Future<void> getTechnologyNews()async {
     final response = await repo.getTechnologyNews();
@@ -78,7 +87,10 @@ class NewsController extends GetxController{
   }
 
   Future<void> getTeslaNews() async {
-    final response = await repo.getQueryNews(query: 'tesla', date: '2024-11-19', sortBy: 'publishedAt');
+    final response = await repo.getQueryNews(
+        query: 'tesla',
+        date: '2024-11-20',
+        sortBy: 'publishedAt');
 
     debugPrint('Response: ${response.body}');
 
@@ -98,7 +110,7 @@ class NewsController extends GetxController{
   }
 
   Future<void> getAppleNews() async {
-    final response = await repo.getPeriodicNews(query: 'apple', from: '2024-12-18', to: '2024-12-18', sortBy: 'popularity');
+    final response = await repo.getPeriodicNews(query: 'apple', from: '2024-12-19', to: '2024-12-19', sortBy: 'popularity');
 
     if (response.statusCode == 200) {
       List<Article> articles = articleResponseModelFromJson(response.body).articles;

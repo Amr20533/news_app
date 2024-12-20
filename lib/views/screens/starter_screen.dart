@@ -13,11 +13,13 @@ class StarterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(NewsController(repo: Get.find()));
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           GetBuilder<NewsController>(
+              init: Get.find<NewsController>(),
               builder: (newsController){
                 final articles = newsController.journalNews;
                 if (articles.isNotEmpty) {
@@ -40,6 +42,7 @@ class StarterScreen extends StatelessWidget {
           ),
           const HeadlineBar(text: 'Most Popular'),
           GetBuilder<NewsController>(
+              init: Get.find<NewsController>(),
               builder: (newsController){
                 final articles = newsController.technology;
                 if (articles.isNotEmpty) {
