@@ -20,6 +20,13 @@ class SearchViewController extends GetxController{
     Get.find<NewsController>().teslaNews,
     Get.find<NewsController>().apple,
   ];
+  List<Article> allNews = [
+    ...Get.find<NewsController>().journalNews,
+    ...Get.find<NewsController>().business,
+    ...Get.find<NewsController>().technology,
+    ...Get.find<NewsController>().teslaNews,
+    ...Get.find<NewsController>().apple,
+  ];
 
   @override
   void onInit() {
