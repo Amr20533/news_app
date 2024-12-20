@@ -16,11 +16,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.find<NewsController>().getJournalNews();
-    Get.find<NewsController>().getBusinessNews();
-    Get.find<NewsController>().getTechnologyNews();
-    Get.find<NewsController>().getAppleNews();
-    Get.find<NewsController>().getTeslaNews();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'News App',
