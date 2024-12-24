@@ -3,6 +3,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:news_app/core/repositories/news_repo.dart';
 import 'package:news_app/model/article_model.dart';
 import 'package:news_app/model/article_response_model.dart';
+import 'package:news_app/utils/helper/format_helper.dart';
 
 class NewsController extends GetxController{
   final NewsRepo repo;
@@ -23,13 +24,13 @@ class NewsController extends GetxController{
   List<Article> get technology => _technology;
 
   @override
-  void onReady() {
+  void onInit() {
     getJournalNews();
     getBusinessNews();
     getTechnologyNews();
     getAppleNews();
     getTeslaNews();
-    super.onReady();
+    super.onInit();
   }
 
   Future<void> getTechnologyNews()async {
@@ -89,7 +90,7 @@ class NewsController extends GetxController{
   Future<void> getTeslaNews() async {
     final response = await repo.getQueryNews(
         query: 'tesla',
-        date: '2024-11-20',
+        date: FormatHelper.subtractOneMonth(DateTime.now()),
         sortBy: 'publishedAt');
 
     debugPrint('Response: ${response.body}');
@@ -110,7 +111,7 @@ class NewsController extends GetxController{
   }
 
   Future<void> getAppleNews() async {
-    final response = await repo.getPeriodicNews(query: 'apple', from: '2024-12-19', to: '2024-12-19', sortBy: 'popularity');
+    final response = await repo.getPeriodicNews(query: 'apple', from: FormatHelper.subtractOneDay(DateTime.now()), to: '2024-12-19', sortBy: 'popularity');
 
     if (response.statusCode == 200) {
       List<Article> articles = articleResponseModelFromJson(response.body).articles;

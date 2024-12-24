@@ -10,10 +10,10 @@ class SourcesScreen extends GetView<SearchViewController> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(NewsController(repo: Get.find()));
     return GetBuilder<NewsController>(
         init: Get.find<NewsController>(),
         builder: (newsController){
-          return Obx(() {
             final articles = controller.allNews;
             final filteredArticles = articles.where((article) => article.source.name.isNotEmpty).toList();
             return ListView.separated(
@@ -26,8 +26,6 @@ class SourcesScreen extends GetView<SearchViewController> {
               },
               separatorBuilder: (context, _) => const SizedBox(height: AppDimensions.defaultVerticalPadding,),
             );
-
-          });
         });
   }
 }

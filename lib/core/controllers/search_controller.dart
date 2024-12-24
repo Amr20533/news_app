@@ -13,6 +13,11 @@ class SearchViewController extends GetxController{
   set setCategorySelection(int newIndex){
     _isSelected.value = newIndex;
   }
+  final RxList<Article> _filteredArticles = <Article>[].obs;
+  RxList<Article> get filteredArticles => _filteredArticles;
+
+
+
   List<List<Article>> articles = [
     Get.find<NewsController>().journalNews,
     Get.find<NewsController>().business,
@@ -27,10 +32,20 @@ class SearchViewController extends GetxController{
     ...Get.find<NewsController>().teslaNews,
     ...Get.find<NewsController>().apple,
   ];
+  void filterArticles() {
+    var _filteredArticles = allNews.where((article) {
+      return article.title
+          .toLowerCase()
+          .contains(searchController.text.toLowerCase());
+    }).toList();
+
+    filteredArticles.value = _filteredArticles;
+  }
 
   @override
   void onInit() {
     searchController = TextEditingController();
+    searchController.addListener(()=> update());
     super.onInit();
   }
 
